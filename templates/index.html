@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>Speech Enchancement</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="static/css/style.css" rel="stylesheet">
+        <script>
+              function setPreview(input){
+                if (input.files && input.files[0]) {
+                  var files = input.files;
+                  $("#src").attr("src", URL.createObjectURL(files[0]));
+                  document.getElementById("audio").load();
+              }
+            }
+        </script>
+        <script>
+          function send()
+          {
+            console.log("Function called");
+            document.getElementById("but").disabled=true;
+            document.getElementById("but").innerHTML="Loading";
+            var data = new FormData(document.getElementById('formdata'));
+            fetch('',{method:'post',body:data})
+            .then(response =>response.json())
+            .catch(error =>{console.error('Error:', error);
+            document.getElementById("but").disabled=false;
+              document.getElementById("but").innerHTML="Go>>";})
+            .then(response => {
+              $("#src1").attr("src", response.result);
+              document.getElementById("out_audio").load();
+              document.getElementById("but").disabled=false;
+              document.getElementById("but").innerHTML="Go>>";
+            });
+          }
+          </script>
+    </head>
+    <style>
+      body {
+        background : url('static/1398314.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100% 100%;  
+      }
+      </style>
+    <body>
+        <div class="container-fluid" id="heading">
+            <div class="row">
+                <div class="col-md-12">
+                    <span style="border: 2px solid white;padding: 4px;margin: 4px;">Speech</span><span><b>Enchancement</b></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" id="topic">
+            <div class="row">
+                <div class="col-md-12">
+                  <span style="color: white"><b>AI-based </b></span><span style="color: white"><b>Speech </b></span><span style="color: white"><b>Enchancement</b></span>
+                </div>
+            </div>
+       
+        </div>
+
+        <div id="adjust"></div>
+
+        <div class="container-fluid" id="QndA">
+            
+                <div class="row">
+                  <div class="col-md-12">
+                    <p style="font-size: 1.8em;padding: 15px;padding-top: 30px;padding-bottom: 30px;font-weight: bold;color: white;">Input audio</p>
+                    <audio id="audio" controls>
+                      <source src="" id="src" type="audio/WAV"/>
+                    </audio> 
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p style="font-size: 1.8em;padding: 15px;padding-top: 30px;padding-bottom: 30px;font-weight: bold;color: white;">output audio</p>
+                    <audio id="out_audio" controls>
+                      <source src="" id="src1" type="audio/WAV"/>
+                    </audio> 
+                  </div>
+                </div>
+                <form method="post" enctype="multipart/form-data" id="formdata" onsubmit= "document.getElementById('but').click();return false;">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="file" style="display:inline;color: white;" name="file" onchange="setPreview(this)" required>        
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="col-md-12">
+                          <button type="button" onclick="send()" id="but">Go>></button>
+                  </div>
+              </div>      
+            </form>    
+        </div>
+	<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<style>
+h2 {text-align: center;}
+</style>
+  <h2>Project Team</h2>
+
+<div class="w3-Third">
+<div class="w3-card w3-white">
+  <img src="static/shivam.jpeg" alt="Snow" style="width:100%">
+    <div>
+      <ul class="w3-ul w3-border w3-hover-shadow">
+
+        <li class="w3-padding-16"><b>Shivam Pandey</b></li>
+        <li class="w3-padding-16"></li>
+        <li class="w3-padding-16"><b>Student of</b> Computer Science and Engineering </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="w3-Third">
+<div class="w3-card w3-white">
+  <img src="static/ayush.jpeg" alt="Lights" style="width:100%">
+  <div>
+      <ul class="w3-ul w3-border w3-hover-shadow">
+
+        <li class="w3-padding-16"><b>Ayush Gupta</b></li>
+        <li class="w3-padding-16"></li>
+        <li class="w3-padding-16"><b>Student of</b> Computer Science and Engineering </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="w3-Third">
+<div class="w3-card w3-white">
+  <img src="static/amartya.jpeg" alt="Mountains" style="width:100%">
+  <div>
+      <ul class="w3-ul w3-border w3-hover-shadow">
+
+        <li class="w3-padding-16"><b>Amartya Singh</b></li>
+        <li class="w3-padding-16"></li>
+        <li class="w3-padding-16"><b>Student of</b> Computer Science and Engineering </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="https://github.com/shivam1423" title="github"><i class="fa fa-github"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="https://www.linkedin.com/in/shivam-pandey-572987152/" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p>Powered by <a href=" " target="_blank">VQAdevelopers</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+    <a class="w3-button w3-theme" href=""><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+    </body>
+</html>
